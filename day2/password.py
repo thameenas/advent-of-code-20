@@ -26,25 +26,18 @@ def split(password):
     return password_string, letter, first_digit, second_digit
 
 
-def validate_password_by_count(password_policies):
-    count = 0
-    for password in password_policies:
-        password_string, letter, first_digit, second_digit = split(password)
-        if validate_by_count(password_string, letter, first_digit, second_digit):
-            count = count + 1
-    return count
-
-
-def validate_password_by_index(password_policies):
-    count = 0
+def validate_password(password_policies):
+    validate_by_index_counter = 0
+    validate_by_occurrence_counter = 0
     for password in password_policies:
         password_string, letter, first_digit, second_digit = split(password)
         if validate_by_index(password_string, letter, first_digit, second_digit):
-            count = count + 1
-    return count
+            validate_by_index_counter += 1
+        if validate_by_count(password_string, letter, first_digit, second_digit):
+            validate_by_occurrence_counter += 1
+    return validate_by_index_counter, validate_by_occurrence_counter
 
 
 if __name__ == '__main__':
     input_data = read_input()
-    print(validate_password_by_count(input_data))
-    print(validate_password_by_index(input_data))
+    print(validate_password(input_data))
