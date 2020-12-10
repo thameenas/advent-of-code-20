@@ -26,21 +26,19 @@ def add_to_graph(input_lines):
     return normal_graph
 
 
-def part1(input_lines):
-    graph = add_to_graph(input_lines)
-    graph.find_bags_that_contain("shiny gold")
-    count_of_bags = graph.find_number_of_bags("shiny gold")
-    return len(graph.bag_list), count_of_bags
+def part1(bags_graph):
+    bags_graph.find_bags_that_contain("shiny gold")
+    return len(bags_graph.bag_list)
 
 
-def part2(input_lines):
-    graph = add_to_graph(input_lines)
-    return graph.find_number_of_bags("shiny gold")
+def part2(bags_graph):
+    return bags_graph.find_number_of_bags("shiny gold")
 
 
 if __name__ == '__main__':
     start_time = time.time()
     input_text = read_input()
-    print(part1(input_text))
-    # print(part2(input_text))
+    graph = add_to_graph(input_text)
+    print(part1(graph))
+    print(part2(graph))
     print("Total time:", time.time() - start_time)

@@ -9,10 +9,12 @@ class Test(TestCase):
     def test_add_to_graph(self):
         input_data = read_input("day7/test_input.txt")
 
-        self.assertEqual(part1(input_data), 4)
-        self.assertEqual(part2(input_data), 32)
+        graph = add_to_graph(input_data)
+        self.assertEqual(part1(graph), 4)
+        self.assertEqual(part2(graph), 32)
 
     def test_add_to_graph2(self):
         input_data = read_input("day7/test_input2.txt")
 
-        self.assertEqual(part2(input_data), 126)
+        graph = add_to_graph(input_data)
+        self.assertEqual(part2(graph), 126)

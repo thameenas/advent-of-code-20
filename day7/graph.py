@@ -17,17 +17,6 @@ class Graph:
                 self.bag_list.add(outer_bag)
                 self.find_bags_that_contain(outer_bag)
 
-    def find_path(self, start, end, path=[]):
-        path = path + [start]
-        if start == end:
-            return path
-        for node in self.graph_dict[start]:
-            if node not in path:
-                newPath = self.find_path(node, end, path)
-                if newPath:
-                    return newPath
-                return None
-
     def find_number_of_bags(self, start):
         count = 0
         if len(self.graph_dict[start].keys()) == 0:
